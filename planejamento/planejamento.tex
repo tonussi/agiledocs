@@ -4,6 +4,45 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\input{../color.tex}
+
+\lstdefinelanguage{javascript}{
+  sensitive=true,
+  keywords={ typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break },
+  otherkeywords={<, >, \/},   
+  ndkeywords={class, export, boolean, throw, implements, import, this},   
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morecomment=[s]{<!}{>},
+  morestring=[b]',
+  morestring=[b]",    
+  alsoletter={-},
+  alsodigit={:}
+}
+
+\lstset{%
+  backgroundcolor=\color{white},
+  basicstyle={\small\ttfamily},
+  numbers=right,
+  stepnumber=1,
+  firstnumber=1,
+  numberfirstline=true,
+  identifierstyle=\color{black},
+  keywordstyle=\color{alizarin}\bfseries,
+  ndkeywordstyle=\color{amaranth}\bfseries,
+  stringstyle=\color{antiquefuchsia}\ttfamily,
+  commentstyle=\color{cinnamon}\ttfamily,
+  language={javascript},
+  tabsize=2,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  extendedchars=true,
+  breaklines=true
+}
 
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
@@ -27,6 +66,12 @@ seguintes fatores para o projeto:
 \qquad O projeto tem riscos técnicos iniciais significativos que precisam ser
 mitigados.
 
+\paragraph{R:}
+
+\textit{Então isso ocasionará aumento do tempo concepção do projeto. Para mitigação dos riscos. Visão e providência das soluções contra eles.}
+
+
+
 \subsection{}
 \qquad O novo sistema vai substituir um sistema existente, exigindo testes de
 operação, migração de dados e intenso treinamento de usuários.
@@ -39,20 +84,74 @@ suporte de ferramentas CASE.
 \section{}
 
 \qquad Seu gerente planejou uma WBS para a próxima iteração do projeto na qual
-constam 600 atividades. Cada atividade dura entre 1 hora e 3 dias. As atividades
-foram decompostas em até 5 níveis de detalhamento. Ele verificou que o caminho
-crítico superaria o número de dias da iteração e por isso subdividiu algumas
-atividades em sub-atividades paralelas e as alocou a diferentes desenvolvedores
-para ganhar tempo e assim conseguir cumprir com o caminho crítico dentro do
-prazo estipulado pela iteração. Aponte os erros cometidos pelo gerente e
-justifique com referência à literatura porque são problemas.
+constam \textbf{600} atividades. Cada atividade dura entre \textbf{1 hora e 3
+dias}. As atividades foram decompostas em até \textbf{5 níveis de detalhamento}.
+Ele verificou que o caminho crítico superaria o número de dias da iteração e por
+isso subdividiu algumas atividades em sub-atividades paralelas e as alocou a
+diferentes desenvolvedores para ganhar tempo e assim conseguir cumprir com o
+caminho crítico dentro do prazo estipulado pela iteração. Aponte os erros
+cometidos pelo gerente e justifique com referência à literatura porque são
+problemas.
+
+
+\paragraph{R:}
+
+O gerente calculou para cada atividade um pior caso de 3 dias. Se para cada uma
+temos 3 dias então está dentro da regra do 8-80 que diz que melhor se fizermos
+caber a \textit{task} dentro dessa faixa, do contrário se maior que 80 horas ou
+$ceil(80/24)$ dias. Temos que re-decompor a atividades em sub-atividades a mais,
+entrando 1 nível a mais, ou 2. Redistribuir a carga (\%) de cada sub-nível da
+atividade, a fim de que de 100\% no total. Mas o gerente colocou a possibilidade
+de 1 hora para 1 atividade. E isso foge a regra do 8-80, que é de no mínimo 8
+horas ou $ceil(8/24)$ dia. Assim tem atividades que poderiam ser agregadas para
+que entrassem dentro do comprimento 8-80 para cada atividade. Isso daria uma
+diminuição do número total de atividades (600 até agora).
+
+\begin{itemize}
+\item $600 / 3 = 200_{d/a}$
+\item $600 / 1 = 600_{hr/a}$
+\end{itemize}
 
 \section{}
 
-\qquad Apresente o código de algum programa que você tenha feito nos últimos tempos
-(aproximadamente uma página de listagem em fonte 12). Conte o número de SLOCs
-efetivas neste programa apresentado o resultado. Anote ao lado de cada linha do
-programa se ela foi contada ou não.
+\qquad Apresente o código de algum programa que você tenha feito nos últimos
+tempos (aproximadamente uma página de listagem em fonte 12). Conte o número de
+SLOCs efetivas neste programa apresentado o resultado. Anote ao lado de cada
+linha do programa se ela foi contada ou não.
+
+\textit{Eu aproveitei o contador ao lado do código para colocar o código para
+ele contar automaticamente. Então eliminando linhas em branco.}
+
+\paragraph{R:}
+
+\begin{itemize}
+\item 15 Linhas de código físicas (LOC/SLOC/KSLOC)
+\item 10 Linhas de código lógicas, 3 \textbf{funções}, 3 \textbf{ifs}, 3 \textbf{throw}, 1 \textbf{printf}, 1 \textbf{transação com memória} (LLOC)
+\item 0 Linhas de comentário
+\end{itemize}
+
+\begin{lstlisting}
+function AutomatoFD(identificador) { +1
+  this.transicoes = []; +1
+  this.id = identificador; +1
+}
+AutomatoFD.prototype = { +1
+  adiciona: function(nodo, terminal) { +1
+    if (terminal == constantes.epsilon_normal || terminal == constantes.epsilon_unicode) { +1
+      throw new Error("Automato deterministico n\u00E3o pode ter epsilon transi\u00E7\u00F5es"); +1
+    }
+    if (!nodo || !terminal) { +1
+      throw new Error("Modo de usar: ref.adiciona(nodo, terminal)"); +1
+    }
+    if (this.transicoes.hasOwnProperty(terminal)) { +1
+      console.log('J\u00E1 existe uma transi\u00E7\u00E3o: %s. Para esse nodo: %s', terminal, nodo); +1
+      throw new Error('J\u00E1 existe uma transi\u00E7\u00E3o desse tipo'); +1
+    }
+    this.transicoes[terminal] = nodo; +1
+  }
+};
+exports.AutomatoFD = AutomatoFD; +1
+\end{lstlisting}
 
 \section{}
 
