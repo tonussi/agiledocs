@@ -9,19 +9,12 @@
 
 \input{../color.tex}
 
-\lstdefinelanguage{javascript}{
-  sensitive=true,
-  keywords={ typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break },
-  otherkeywords={<, >, \/},   
-  ndkeywords={class, export, boolean, throw, implements, import, this},   
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morecomment=[s]{<!}{>},
-  morestring=[b]',
-  morestring=[b]",    
-  alsoletter={-},
-  alsodigit={:}
-}
+\lstdefinelanguage{javascript}{ sensitive=true, keywords={ typeof, new, true,
+false, catch, function, return, null, catch, switch, var, if, in, while, do,
+else, case, break }, otherkeywords={<, >, \/}, ndkeywords={class, export,
+boolean, throw, implements, import, this}, comment=[l]{//},
+morecomment=[s]{/*}{*/}, morecomment=[s]{<!}{>}, morestring=[b]',
+morestring=[b]", alsoletter={-}, alsodigit={:} }
 
 \lstset{%
   backgroundcolor=\color{white},
@@ -49,7 +42,16 @@
 
 \renewcommand\thesection{Questão \arabic{section}}
 
+\title{Questões Sobre Planejamento e Esforço}
+\author{Lucas Tonussi - Engenharia de Software}
+\date{\today}
+
 \begin{document}
+
+\maketitle
+\tableofcontents
+\listoftables
+\pagebreak
 
 \section{}
 \qquad Você foi encarregado de fazer o planejamento de um projeto usando
@@ -125,17 +127,17 @@ tamanho do ciclo. Ela sendo experiente e tendo as ferramentas CASE isso será um
 facilitador para eles obterem o release no fim de cada ciclo.
 
 \begin{table}[ht!]
-\centering
-\begin{tabular}{|c|c|c|c|c|}
-\hline Fase & Duração (semanas) & Duração & Nro desenv. (média) & Nro desenv. \\ 
-\hline Concepção & 3,6 & 4 & 2,777  & 3 \\ 
-\hline Elaboração & 7,2 & 7 & 1,388  & 1 \\ 
-\hline Construção & 8,4 & 8 & 1,190  & 1 \\ 
-\hline Transição & 4,8 & 5 & 2,083  & 2 \\ 
-\hline Total & 24 & 24 & 7,438  & 7 \\ 
-\hline
-\end{tabular}
-\caption{Tabela Processo Unificado}
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline Fase & Duração (semanas) & Duração & Nro desenv. (média) & Nro desenv. \\ 
+    \hline Concepção & 3,6 & 4 & 2,777  & 3 \\ 
+    \hline Elaboração & 7,2 & 7 & 1,388  & 1 \\ 
+    \hline Construção & 8,4 & 8 & 1,190  & 1 \\ 
+    \hline Transição & 4,8 & 5 & 2,083  & 2 \\ 
+    \hline Total & 24 & 24 & 7,438  & 7 \\ 
+    \hline
+  \end{tabular}
+  \caption{Tabela Processo Unificado}
 \end{table}
 
 \section{}
@@ -172,16 +174,16 @@ que você não ultrapasse 4 subníveis. Pois isso pode dificultar a administraç
 do projeto.
 
 \begin{itemize}
-\item $600 / 3 = 200_{d/a}$
-\item $600 / 1 = 600_{hr/a}$
+  \item $600 / 3 = 200_{d/a}$
+  \item $600 / 1 = 600_{hr/a}$
 \end{itemize}
 
-
 \begin{enumerate}
-\item A list of all activities required to complete the project (typically categorized within a work breakdown structure),
-\item The time (duration) that each activity will take to complete,
-\item The dependencies between the activities and,
-\item Logical end points such as milestones or deliverable items.
+  \item A list of all activities required to complete the project (typically
+categorized within a work breakdown structure),
+  \item The time (duration) that each activity will take to complete,
+  \item The dependencies between the activities and,
+  \item Logical end points such as milestones or deliverable items.
 \end{enumerate}
 
 \section{}
