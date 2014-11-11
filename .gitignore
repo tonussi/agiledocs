@@ -60,3 +60,6 @@ target/
 *.odf
 *.odt
 *.synctex.gz
+*.lof
+*.lot
+*.toc
