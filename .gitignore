@@ -56,7 +56,6 @@ target/
 # Tex
 *.aux
 *.ods
-*.pdf
 *.odf
 *.odt
 *.synctex.gz
